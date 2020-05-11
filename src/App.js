@@ -6,9 +6,9 @@ import Login from './userInfo/login';
 function App() {
   return (
     <div className="App">
-      <Register/>
+      <Register />
       <br></br>
-      <Login/>
+      <Login />
     </div>
   );
 }
