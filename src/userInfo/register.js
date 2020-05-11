@@ -38,7 +38,7 @@ const Register = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label for="FirstName">First Name:</Label>
                 <Input type="text" 
@@ -78,7 +78,7 @@ const Register = () => {
             </FormGroup>
 
             <Button>Submit</Button>
-        </form>
+        </Form>
     )
 }
 
