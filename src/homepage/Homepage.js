@@ -12,6 +12,8 @@ const Homepage = () => {
     setInputIngredient("");
   }
 
+  console.log(ingredient);
+
   return (
     <div>
       <form>
@@ -19,6 +21,7 @@ const Homepage = () => {
           type="text"
           placeholder="enter ingredient"
           onChange={(e) => setInputIngredient(e.target.value)}
+          value={inputIngredient}
         />
         <button type="submit" onClick={addIngredient}>
           <FontAwesomeIcon icon={faPlus} />
