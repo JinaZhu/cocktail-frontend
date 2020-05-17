@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 
+import IngredientList from "./IngredientList";
+
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
@@ -11,8 +13,6 @@ const Homepage = () => {
     setIngredient(ingredient.concat(inputIngredient));
     setInputIngredient("");
   }
-
-  console.log(ingredient);
 
   return (
     <div>
@@ -30,6 +30,7 @@ const Homepage = () => {
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </form>
+      <IngredientList ingredients={ingredient} />
     </div>
   );
 };
