@@ -24,6 +24,7 @@ const Homepage = () => {
 
   return (
     <Background>
+      <img src={logo} alt="logo" width="210" style={{ margin: "5% 0" }} />
       <form>
         <input
           type="text"
