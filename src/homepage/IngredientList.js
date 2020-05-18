@@ -9,12 +9,12 @@ import {
   DeleteIngredientButton,
 } from "./HomepageStyles";
 
-const IngredientList = (ingredients) => {
-  const allIngredients = ingredients.ingredients.map((ingredient, index) => {
+const IngredientList = ({ ingredients, deleteIngredient }) => {
+  const allIngredients = ingredients.map((ingredient, index) => {
     return (
       <IngredientContainer key={index}>
         <IngredientItem>{ingredient}</IngredientItem>
-        <DeleteIngredientButton>
+        <DeleteIngredientButton onClick={() => deleteIngredient(index)}>
           <FontAwesomeIcon icon={faTimes} />
         </DeleteIngredientButton>
       </IngredientContainer>

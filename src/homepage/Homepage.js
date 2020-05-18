@@ -14,6 +14,12 @@ const Homepage = () => {
     setInputIngredient("");
   }
 
+  const deleteIngredient = (deleteIndex) => {
+    const ingredientCopy = [...ingredient];
+    ingredientCopy.splice(deleteIndex, 1);
+    setIngredient(ingredientCopy);
+  };
+
   return (
     <div>
       <form>
@@ -30,7 +36,10 @@ const Homepage = () => {
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </form>
-      <IngredientList ingredients={ingredient} />
+      <IngredientList
+        ingredients={ingredient}
+        deleteIngredient={deleteIngredient}
+      />
     </div>
   );
 };
