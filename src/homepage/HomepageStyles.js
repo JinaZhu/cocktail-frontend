@@ -24,10 +24,13 @@ export const IngredientContainer = styled.div`
   background: white;
   min-width: 30%;
   margin: 0.5rem;
+  opacity: 0.7;
 `;
 
 export const IngredientItem = styled.li`
   margin: 0 auto;
+  color: #6c6c6c;
+  font-size: 1.5rem;
 `;
 
 export const DeleteIngredientButton = styled.button`
@@ -35,7 +38,12 @@ export const DeleteIngredientButton = styled.button`
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
+
+  &:hover {
+    color: white;
+    background: #6c6c6c;
+  }
 `;
 
 export const SearchBarContainer = styled.form`

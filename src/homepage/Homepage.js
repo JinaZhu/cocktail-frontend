@@ -29,12 +29,7 @@ const Homepage = () => {
 
   return (
     <Background>
-      <img
-        src={logo}
-        alt="logo"
-        width="210"
-        style={{ margin: "5% 0 0.5% 0" }}
-      />
+      <img src={logo} alt="logo" width="210" style={{ margin: "5% 0 1% 0" }} />
       <SearchBarContainer>
         <InputStyle
           type="text"
