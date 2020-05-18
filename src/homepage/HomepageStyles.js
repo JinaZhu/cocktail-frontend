@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import cocktail from "../static/cocktail.png";
+
+export const Background = styled.div`
+  background: url(${cocktail}) no-repeat center;
+  background-size: 1500px 860px;
+  height: 100vh;
+`;
 
 export const IngredientDiv = styled.div`
   display: flex;

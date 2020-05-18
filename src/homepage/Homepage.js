@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Background } from "./HomepageStyles";
+import logo from "../static/cocktail-logo.png";
 
 import IngredientList from "./IngredientList";
 
@@ -21,7 +23,7 @@ const Homepage = () => {
   };
 
   return (
-    <div>
+    <Background>
       <form>
         <input
           type="text"
@@ -40,7 +42,7 @@ const Homepage = () => {
         ingredients={ingredient}
         deleteIngredient={deleteIngredient}
       />
-    </div>
+    </Background>
   );
 };
 
