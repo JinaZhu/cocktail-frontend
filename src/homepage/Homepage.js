@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { Background } from "./HomepageStyles";
+import {
+  Background,
+  SearchBarContainer,
+  InputStyle,
+  StyleInputButtons,
+} from "./HomepageStyles";
 import logo from "../static/cocktail-logo.png";
 
 import IngredientList from "./IngredientList";
@@ -24,21 +29,26 @@ const Homepage = () => {
 
   return (
     <Background>
-      <img src={logo} alt="logo" width="210" style={{ margin: "5% 0" }} />
-      <form>
-        <input
+      <img
+        src={logo}
+        alt="logo"
+        width="210"
+        style={{ margin: "5% 0 0.5% 0" }}
+      />
+      <SearchBarContainer>
+        <InputStyle
           type="text"
           placeholder="enter ingredient"
           onChange={(e) => setInputIngredient(e.target.value)}
           value={inputIngredient}
         />
-        <button type="submit" onClick={addIngredient}>
+        <StyleInputButtons type="submit" onClick={addIngredient}>
           <FontAwesomeIcon icon={faPlus} />
-        </button>
-        <button type="submit">
+        </StyleInputButtons>
+        <StyleInputButtons type="submit">
           <FontAwesomeIcon icon={faSearch} />
-        </button>
-      </form>
+        </StyleInputButtons>
+      </SearchBarContainer>
       <IngredientList
         ingredients={ingredient}
         deleteIngredient={deleteIngredient}

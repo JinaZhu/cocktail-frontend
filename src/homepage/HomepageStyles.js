@@ -21,10 +21,9 @@ export const IngredientContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background: white;
   min-width: 30%;
   margin: 0.5rem;
-  background: #f1ece1;
 `;
 
 export const IngredientItem = styled.li`
@@ -32,9 +31,39 @@ export const IngredientItem = styled.li`
 `;
 
 export const DeleteIngredientButton = styled.button`
-  color: #f1ece1;
+  color: #6c6c6c;
   border: none;
   padding: 0.5rem;
   cursor: pointer;
   font-size: 1rem;
+`;
+
+export const SearchBarContainer = styled.form`
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+`;
+
+export const InputStyle = styled.input`
+  padding: 0.5rem;
+  font-size: 2rem;
+  color: #6c6c6c;
+  border: none;
+  background: white;
+`;
+
+export const StyleInputButtons = styled.button`
+  color: #6c6c6c;
+  background: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 2rem;
+  border: none;
+
+  &:hover {
+    color: white;
+    background: #6c6c6c;
+  }
 `;
