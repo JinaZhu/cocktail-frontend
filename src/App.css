@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+/* #root,
+body {
+  background: url(./static/cocktail.png);
+  background-position: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+} */
