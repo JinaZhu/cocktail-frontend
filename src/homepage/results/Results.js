@@ -17,5 +17,5 @@ const Results = ({ results }) => {
     </div>;
   });
 
-  return <div></div>;
+  return <div>{allResults}</div>;
 };
