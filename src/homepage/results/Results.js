@@ -1,14 +1,14 @@
 import React from "React";
 
-import { ResultContainer } from "./ResultStyles";
+import { ResultContainer, CocktailTitleContainer } from "./ResultStyles";
 
 const Results = ({ results }) => {
   const allResults = results.map((result, index) => {
-    <div key={index}>
+    <ResultContainer key={index}>
       <img src={result.image} alt="cocktail image" width="250" />
-      <div>
+      <CocktailTitleContainer>
         <h2>{result.name}</h2>
-      </div>
+      </CocktailTitleContainer>
       <div>
         <ul>
           {result.ingredients.map((ingredient, index) => {
@@ -16,7 +16,7 @@ const Results = ({ results }) => {
           })}
         </ul>
       </div>
-    </div>;
+    </ResultContainer>;
   });
 
   return <div>{allResults}</div>;
