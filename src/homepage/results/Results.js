@@ -1,5 +1,7 @@
 import React from "React";
 
+import { ResultContainer } from "./ResultStyles";
+
 const Results = ({ results }) => {
   const allResults = results.map((result, index) => {
     <div key={index}>
