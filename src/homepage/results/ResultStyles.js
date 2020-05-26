@@ -31,6 +31,17 @@ export const CocktailTitleText = styled.h2`
   margin: 3%;
 `;
 
+export const ListContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 225px;
+  flex-wrap: wrap;
+  padding: 0;
+`;
+
 export const ListStyle = styled.li`
   list-style-type: "- ";
+  list-style-position: inside;
 `;

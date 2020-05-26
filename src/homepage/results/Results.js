@@ -1,13 +1,13 @@
 import React from "react";
 
 import cherryCocktail from "../../static/cherry-cocktail.jpg";
-
 import {
   ResultContainer,
   CocktailTitleContainer,
   CocktailsContainer,
   CocktailTitleText,
   ListStyle,
+  ListContainer,
 } from "./ResultStyles";
 
 const Results = () => {
@@ -20,18 +20,12 @@ const Results = () => {
     {
       image: cherryCocktail,
       name: "Fresh Cherry Coolers",
-      ingredients: [
-        "cherry",
-        "ice",
-        "sugar",
-        "lemon juice",
-        "bourbonsssssssssssssssssssssssssss",
-      ],
+      ingredients: ["cherry", "ice", "sugar", "lemon juice", "bourbon"],
     },
     {
       image: cherryCocktail,
       name: "Fresh Cherry Coolers",
-      ingredients: ["cherry", "ice", "sugar", "lemon juice", "bourbon"],
+      ingredients: ["cherry", "ice", "bourbon"],
     },
   ];
 
@@ -48,13 +42,11 @@ const Results = () => {
         <CocktailTitleContainer>
           <CocktailTitleText>{result.name}</CocktailTitleText>
         </CocktailTitleContainer>
-        <div>
-          <ul>
-            {result.ingredients.map((ingredient, index) => {
-              return <ListStyle key={index}>{ingredient}</ListStyle>;
-            })}
-          </ul>
-        </div>
+        <ListContainer>
+          {result.ingredients.map((ingredient, index) => {
+            return <ListStyle key={index}>{ingredient}</ListStyle>;
+          })}
+        </ListContainer>
       </ResultContainer>
     );
   });
