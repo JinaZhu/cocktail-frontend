@@ -1,7 +1,16 @@
 import React, { useState} from 'react';
-import { Form, FormContent, FormGroup, Label, FormText, Input, Button } from 'reactstrap';
+import { Form, 
+    Button, 
+    FormGroup, 
+    Label, 
+    Input, 
+    Modal, 
+    ModalHeader, 
+    ModalBody, 
+    ModalFooter } from 'reactstrap';
 
-const Login = () => {
+
+const Login = ({isOpen, toggle}) => {
 
     const initialState = {
         email: '',
@@ -9,6 +18,8 @@ const Login = () => {
     }
 
     const [loginForm, setLoginForm] = useState(initialState)
+    
+    const closeBtn = <button className="close" onClick={toggle}>&times;</button>
 
     const handleChange = (evt) => setLoginForm({
         ...loginForm,
@@ -34,7 +45,10 @@ const Login = () => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
+    <Modal isOpen={isOpen} toggle={toggle} >
+      <ModalHeader toggle={toggle} close={closeBtn}>Login</ModalHeader>
+        <ModalBody>        
+          <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Label for="Email">Email:</Label>
                 <Input type="email" 
@@ -55,6 +69,8 @@ const Login = () => {
 
             <Button>Submit</Button>
         </Form>
+        </ModalBody>
+        </Modal>
     )
 }
 
