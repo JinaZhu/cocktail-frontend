@@ -6,6 +6,8 @@ import {
   ResultContainer,
   CocktailTitleContainer,
   CocktailsContainer,
+  CocktailTitleText,
+  ListStyle,
 } from "./ResultStyles";
 
 const Results = () => {
@@ -13,12 +15,18 @@ const Results = () => {
     {
       image: cherryCocktail,
       name: "Fresh Cherry Coolers",
-      ingredients: ["cherry", "ice", "sugar", "lemon juice", "bourbon"],
+      ingredients: ["cherry", "sugar", "lemon juice", "bourbon"],
     },
     {
       image: cherryCocktail,
       name: "Fresh Cherry Coolers",
-      ingredients: ["cherry", "ice", "sugar", "lemon juice", "bourbon"],
+      ingredients: [
+        "cherry",
+        "ice",
+        "sugar",
+        "lemon juice",
+        "bourbonsssssssssssssssssssssssssss",
+      ],
     },
     {
       image: cherryCocktail,
@@ -38,12 +46,12 @@ const Results = () => {
           object-fit="cover"
         />
         <CocktailTitleContainer>
-          <h2>{result.name}</h2>
+          <CocktailTitleText>{result.name}</CocktailTitleText>
         </CocktailTitleContainer>
         <div>
           <ul>
             {result.ingredients.map((ingredient, index) => {
-              return <li key={index}>{ingredient}</li>;
+              return <ListStyle key={index}>{ingredient}</ListStyle>;
             })}
           </ul>
         </div>
