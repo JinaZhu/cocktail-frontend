@@ -10,6 +10,7 @@ import {
 import logo from "../static/cocktail-logo.png";
 
 import IngredientList from "./IngredientList";
+import Results from "./results/Results";
 
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
@@ -28,27 +29,35 @@ const Homepage = () => {
   };
 
   return (
-    <Background>
-      <img src={logo} alt="logo" width="210" style={{ margin: "5% 0 1% 0" }} />
-      <SearchBarContainer>
-        <InputStyle
-          type="text"
-          placeholder="enter ingredient"
-          onChange={(e) => setInputIngredient(e.target.value)}
-          value={inputIngredient}
+    <div>
+      <Background>
+        <img
+          src={logo}
+          alt="logo"
+          width="210"
+          style={{ margin: "5% 0 1% 0" }}
         />
-        <StyleInputButtons type="submit" onClick={addIngredient}>
-          <FontAwesomeIcon icon={faPlus} />
-        </StyleInputButtons>
-        <StyleInputButtons type="submit">
-          <FontAwesomeIcon icon={faSearch} />
-        </StyleInputButtons>
-      </SearchBarContainer>
-      <IngredientList
-        ingredients={ingredient}
-        deleteIngredient={deleteIngredient}
-      />
-    </Background>
+        <SearchBarContainer>
+          <InputStyle
+            type="text"
+            placeholder="enter ingredient"
+            onChange={(e) => setInputIngredient(e.target.value)}
+            value={inputIngredient}
+          />
+          <StyleInputButtons type="submit" onClick={addIngredient}>
+            <FontAwesomeIcon icon={faPlus} />
+          </StyleInputButtons>
+          <StyleInputButtons type="submit">
+            <FontAwesomeIcon icon={faSearch} />
+          </StyleInputButtons>
+        </SearchBarContainer>
+        <IngredientList
+          ingredients={ingredient}
+          deleteIngredient={deleteIngredient}
+        />
+      </Background>
+      <Results />
+    </div>
   );
 };
 
