@@ -35,7 +35,6 @@ function App() {
         'Content-Type': 'application/json',
       }
     });
-    console.log(user, 'user')
     setUser(false)
     alert('Successfully logged out!')
 

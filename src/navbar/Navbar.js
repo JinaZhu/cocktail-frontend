@@ -13,7 +13,7 @@ const Navbar = ({user, setUser, userLogout}) => {
   
   if (user) {
     return (
-      <Nav>
+      <Nav style={{backgroundColor: 'transparent', justifyContent:'right'}}>
         <NavItem>
           <NavLink href="/displaySavedCocktails">
             Saved Cocktails
@@ -30,7 +30,7 @@ const Navbar = ({user, setUser, userLogout}) => {
 
   return (
     <>
-      <Nav>
+      <Nav style={{backgroundColor: 'transparent', justifyContent:'right'}}>
         <NavItem>
           <NavLink href="#" onClick={toggleRegister}>
             Register
