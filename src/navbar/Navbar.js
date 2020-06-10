@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Register from "../userInfo/register";
 import Login from "../userInfo/login";
 import { Nav, NavItem, NavLink } from "reactstrap";
+import { StyleLink } from "./NavbarStyles";
 
 const Navbar = ({ user, setUser, userLogout }) => {
   const [registerModal, setRegisterModal] = useState(false);
@@ -10,48 +11,35 @@ const Navbar = ({ user, setUser, userLogout }) => {
   const toggleRegister = () => setRegisterModal(!registerModal);
   const toggleLogin = () => setLoginModal(!loginModal);
 
-  // if (user) {
-  //   return (
-  //     <Nav style={{ backgroundColor: "transparent", justifyContent: "right" }}>
-  //       <NavItem>
-  //         <NavLink href="/displaySavedCocktails">Saved Cocktails</NavLink>
-  //       </NavItem>
-  //       <NavItem>
-  //         <NavLink href="#" onClick={userLogout}>
-  //           Logout
-  //         </NavLink>
-  //       </NavItem>
-  //     </Nav>
-  //   );
-  // }
-
   return (
-    <>
-      <Nav style={{ backgroundColor: "transparent", justifyContent: "right" }}>
+    <div style={{ margin: '5px 15px'}}>
+      <Nav style={{ float: "right"}}>
         {!user && (
           <NavItem>
-            <NavLink href="#" onClick={toggleRegister}>
+            <StyleLink href="#" onClick={toggleRegister}>
               Register
-            </NavLink>
+            </StyleLink>
           </NavItem>
         )}
         {!user && (
           <NavItem>
-            <NavLink href="#" onClick={toggleLogin}>
+            <StyleLink href="#" onClick={toggleLogin}>
               Login
-            </NavLink>
+            </StyleLink>
           </NavItem>
         )}
         {user && (
           <NavItem>
-            <NavLink href="/displaySavedCocktails">Saved Cocktails</NavLink>
+            <StyleLink href="/displaySavedCocktails">
+              Saved Cocktails
+            </StyleLink>
           </NavItem>
         )}
         {user && (
           <NavItem>
-            <NavLink href="#" onClick={userLogout}>
+            <StyleLink href="#" onClick={userLogout}> 
               Logout
-            </NavLink>
+            </StyleLink>
           </NavItem>
         )}
       </Nav>
@@ -61,7 +49,7 @@ const Navbar = ({ user, setUser, userLogout }) => {
         setUser={setUser}
       />
       <Login isOpen={loginModal} toggle={toggleLogin} setUser={setUser} />
-    </>
+    </div>
   );
 };
 
