@@ -9,7 +9,6 @@ import Homepage from "./homepage/Homepage";
 function App() {
 
   const [user, setUser] = useState(false);
-  const [value, setValue] = useState('');
 
   // check if user is logged in
   useEffect(() => {
@@ -51,25 +50,6 @@ function App() {
       </Router>
     </div>
   );
-
-  //sending ingredients to server.py when clicking submit
-  
-  function handleSubmit(e) {
-    e.preventDefault();
-    const data = { ingredients: value };
-    console.log('submit');
-    console.log(value);
-    fetch('/ingredientsresults.json', {
-      method: 'POST',
-      headers: {
-
-      }
-    })
-  }
-
-  function handleValue(e) {
-    setValue(e.target.value);
-  }
 }
 
 export default App;

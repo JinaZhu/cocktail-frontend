@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Register from "../userInfo/register";
 import Login from "../userInfo/login";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav, NavItem } from "reactstrap";
 import { StyleLink } from "./NavbarStyles";
 
 const Navbar = ({ user, setUser, userLogout }) => {
