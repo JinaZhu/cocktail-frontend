@@ -30,7 +30,7 @@ const Homepage = () => {
 
   return (
     <div>
-      <Background>
+      {/* <Background> */}
         <img
           src={logo}
           alt="logo"
@@ -55,7 +55,7 @@ const Homepage = () => {
           ingredients={ingredient}
           deleteIngredient={deleteIngredient}
         />
-      </Background>
+      {/* </Background> */}
       <Results />
     </div>
   );
