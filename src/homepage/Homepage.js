@@ -15,6 +15,7 @@ import Results from "./results/Results";
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
+  const [cocktailResult, setCocktailResult] = useState([])
 
   function addIngredient(e) {
     e.preventDefault();
@@ -28,6 +29,29 @@ const Homepage = () => {
     setIngredient(ingredientCopy);
   };
 
+  //sending ingredients to server.py when clicking submit
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const data = { ingredients: ingredient };
+    console.log('submit');
+    console.log(data);
+      try {
+        const result = await fetch('/ingredientsresults.json', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+          
+        });
+        const jsonCocktailResult = await result.json();
+        //storing cocktail results
+        setCocktailResult(jsonCocktailResult)
+        console.log(jsonCocktailResult)
+      } catch (error) {
+          console.log(`Error: ${error}`)
+      }
+  }
   return (
     <div>
       {/* <Background> */}
@@ -47,7 +71,7 @@ const Homepage = () => {
           <StyleInputButtons type="submit" onClick={addIngredient}>
             <FontAwesomeIcon icon={faPlus} />
           </StyleInputButtons>
-          <StyleInputButtons type="submit">
+          <StyleInputButtons type="submit" onClick={handleSubmit}>
             <FontAwesomeIcon icon={faSearch} />
           </StyleInputButtons>
         </SearchBarContainer>
@@ -56,7 +80,9 @@ const Homepage = () => {
           deleteIngredient={deleteIngredient}
         />
       {/* </Background> */}
-      <Results />
+      <Results 
+        results={cocktailResult}
+      />
     </div>
   );
 };
