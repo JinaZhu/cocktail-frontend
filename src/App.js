@@ -17,7 +17,6 @@ function App() {
       try {
         const jsonUserName = await userName.json();
         if (jsonUserName.response) {
-          // console.log(jsonUserName.response)
           setUser(jsonUserName.response);
       }
     } catch (error) {
