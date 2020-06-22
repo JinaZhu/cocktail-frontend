@@ -19,8 +19,12 @@ const Homepage = () => {
 
   function addIngredient(e) {
     e.preventDefault();
-    setIngredient(ingredient.concat(inputIngredient));
+    //because state is 1 behind, we used 4 as the max length
+    if (ingredient.length > 4) {
+      alert('Maximum of 5 ingredients allowed per search.');
+    }else {setIngredient(ingredient.concat(inputIngredient));
     setInputIngredient("");
+    }
   }
 
   const deleteIngredient = (deleteIndex) => {
@@ -61,13 +65,13 @@ const Homepage = () => {
           width="210"
           style={{ margin: "5% 0 1% 0" }}
         />
+        <p style= {{color: 'white'}}><em>*Add a maximum of 5 ingredients per search*</em></p>
         <SearchBarContainer>
           <InputStyle
             type="text"
             placeholder="enter ingredient"
             onChange={(e) => setInputIngredient(e.target.value)}
             value={inputIngredient}
-            maxLength="5"
           />
           <StyleInputButtons type="submit" onClick={addIngredient}>
             <FontAwesomeIcon icon={faPlus} />
