@@ -67,6 +67,7 @@ const Homepage = () => {
             placeholder="enter ingredient"
             onChange={(e) => setInputIngredient(e.target.value)}
             value={inputIngredient}
+            maxLength="5"
           />
           <StyleInputButtons type="submit" onClick={addIngredient}>
             <FontAwesomeIcon icon={faPlus} />
