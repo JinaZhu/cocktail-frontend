@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
-  Background,
+  HomepageContainer,
   SearchBarContainer,
   InputStyle,
   StyleInputButtons,
@@ -15,7 +15,7 @@ import Results from "./results/Results";
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
-  const [cocktailResult, setCocktailResult] = useState([])
+  const [cocktailResult, setCocktailResult] = useState([]);
 
   function addIngredient(e) {
     e.preventDefault();
@@ -33,28 +33,27 @@ const Homepage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ingredients: ingredient };
-    console.log('submit');
+    console.log("submit");
     console.log(data);
-      try {
-        const result = await fetch('/ingredientsresults.json', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-          
-        });
-        const jsonCocktailResult = await result.json();
-        //storing cocktail results
-        setCocktailResult(jsonCocktailResult)
-        console.log(jsonCocktailResult)
-      } catch (error) {
-          console.log(`Error: ${error}`)
-      }
+    try {
+      const result = await fetch("/ingredientsresults.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jsonCocktailResult = await result.json();
+      //storing cocktail results
+      setCocktailResult(jsonCocktailResult);
+      console.log(jsonCocktailResult);
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
   }
   return (
     <div>
-      {/* <Background> */}
+      <HomepageContainer>
         <img
           src={logo}
           alt="logo"
@@ -79,10 +78,8 @@ const Homepage = () => {
           ingredients={ingredient}
           deleteIngredient={deleteIngredient}
         />
-      {/* </Background> */}
-      <Results 
-        results={cocktailResult}
-      />
+      </HomepageContainer>
+      <Results results={cocktailResult} />
     </div>
   );
 };
