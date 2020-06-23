@@ -23,7 +23,7 @@ const Results = ({ results }) => {
         body: JSON.stringify(results[index]),
       });
       const jsonResponse = await response.json();
-      alert(jsonResponse.message);
+      alert(jsonResponse.response);
     } catch (error) {
       console.log("Error:", error);
     }

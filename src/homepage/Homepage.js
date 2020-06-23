@@ -46,7 +46,6 @@ const Homepage = () => {
       const jsonCocktailResult = await result.json();
       //storing cocktail results
       setCocktailResult(jsonCocktailResult);
-      console.log(jsonCocktailResult);
     } catch (error) {
       console.log(`Error: ${error}`);
     }
