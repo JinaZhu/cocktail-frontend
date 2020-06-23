@@ -1,6 +1,4 @@
 import React from "react";
-
-import cherryCocktail from "../../static/cherry-cocktail.jpg";
 import {
   ResultContainer,
   CocktailTitleContainer,
@@ -8,26 +6,28 @@ import {
   CocktailTitleText,
   ListStyle,
   ListContainer,
+  SaveButton,
 } from "./ResultStyles";
 
 const Results = ({ results }) => {
-  // const results = [
-  //   {
-  //     image: cherryCocktail,
-  //     name: "Fresh Cherry Coolers",
-  //     ingredients: ["cherry", "sugar", "lemon juice", "bourbon"],
-  //   },
-  //   {
-  //     image: cherryCocktail,
-  //     name: "Fresh Cherry Coolers",
-  //     ingredients: ["cherry", "ice", "sugar", "lemon juice", "bourbon"],
-  //   },
-  //   {
-  //     image: cherryCocktail,
-  //     name: "Fresh Cherry Coolers",
-  //     ingredients: ["cherry", "ice", "bourbon"],
-  //   },
-  // ];
+  const handleSave = async (index, e) => {
+    e.preventDefault();
+    console.log(results[index]);
+
+    try {
+      const response = await fetch("/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(results[index]),
+      });
+      const jsonResponse = await response.json();
+      alert(jsonResponse.message);
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   const allResults = results.map((result, index) => {
     return (
@@ -47,6 +47,7 @@ const Results = ({ results }) => {
             return <ListStyle key={index}>{ingredient}</ListStyle>;
           })}
         </ListContainer>
+        <SaveButton onClick={(e) => handleSave(index, e)}>Save</SaveButton>
       </ResultContainer>
     );
   });
