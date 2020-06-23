@@ -19,12 +19,16 @@ const Homepage = () => {
 
   function addIngredient(e) {
     e.preventDefault();
-    //because state is 1 behind, we used 4 as the max length
-    if (ingredient.length > 4) {
-      alert('Maximum of 5 ingredients allowed per search.');
-    }else {setIngredient(ingredient.concat(inputIngredient));
-    setInputIngredient("");
+    if (inputIngredient === "") {
+      alert('Please enter a valid ingredient');
+    }else {
+      //because state is 1 behind, we used 4 as the max length
+      if (ingredient.length > 4) {
+        alert('Maximum of 5 ingredients allowed per search.');
+      }else {setIngredient(ingredient.concat(inputIngredient));
+      setInputIngredient("");
     }
+  }
   }
 
   const deleteIngredient = (deleteIndex) => {
@@ -49,9 +53,12 @@ const Homepage = () => {
           
         });
         const jsonCocktailResult = await result.json();
-        //storing cocktail results
+        if (jsonCocktailResult.message) {
+          alert(jsonCocktailResult.message)
+        }else {
+          //storing cocktail results
         setCocktailResult(jsonCocktailResult)
-        console.log(jsonCocktailResult)
+        }
       } catch (error) {
           console.log(`Error: ${error}`)
       }
