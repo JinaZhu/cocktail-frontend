@@ -15,8 +15,8 @@ export const ResultContainer = styled.div`
   align-items: center;
   margin: 0 50px 20px 50px;
   border: 1px solid black;
-  min-height: 500px;
-  max-width: 250px;
+  height: 600px;
+  width: 250px;
 `;
 
 export const CocktailTitleContainer = styled.div`
@@ -44,4 +44,18 @@ export const ListContainer = styled.ul`
 export const ListStyle = styled.li`
   list-style-type: "- ";
   list-style-position: inside;
+`;
+
+export const SaveButton = styled.button`
+  color: black;
+  background: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #6c6c6c;
+
+  &:hover {
+    color: white;
+    background: black;
+  }
 `;

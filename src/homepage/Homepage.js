@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
-  Background,
+  HomepageContainer,
   SearchBarContainer,
   InputStyle,
   StyleInputButtons,
@@ -15,20 +15,21 @@ import Results from "./results/Results";
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
-  const [cocktailResult, setCocktailResult] = useState([])
+  const [cocktailResult, setCocktailResult] = useState([]);
 
   function addIngredient(e) {
     e.preventDefault();
     if (inputIngredient === "") {
-      alert('Please enter a valid ingredient');
-    }else {
+      alert("Please enter a valid ingredient");
+    } else {
       //because state is 1 behind, we used 4 as the max length
       if (ingredient.length > 4) {
-        alert('Maximum of 5 ingredients allowed per search.');
-      }else {setIngredient(ingredient.concat(inputIngredient));
-      setInputIngredient("");
+        alert("Maximum of 5 ingredients allowed per search.");
+      } else {
+        setIngredient(ingredient.concat(inputIngredient));
+        setInputIngredient("");
+      }
     }
-  }
   }
 
   const deleteIngredient = (deleteIndex) => {
@@ -41,38 +42,39 @@ const Homepage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ingredients: ingredient };
-    console.log('submit');
+    console.log("submit");
     console.log(data);
-      try {
-        const result = await fetch('/ingredientsresults.json', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-          
-        });
-        const jsonCocktailResult = await result.json();
-        if (jsonCocktailResult.message) {
-          alert(jsonCocktailResult.message)
-        }else {
-          //storing cocktail results
-        setCocktailResult(jsonCocktailResult)
-        }
-      } catch (error) {
-          console.log(`Error: ${error}`)
+    try {
+      const result = await fetch("/ingredientsresults.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const jsonCocktailResult = await result.json();
+      if (jsonCocktailResult.message) {
+        alert(jsonCocktailResult.message);
+      } else {
+        //storing cocktail results
+        setCocktailResult(jsonCocktailResult);
       }
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
   }
   return (
     <div>
-      {/* <Background> */}
+      <HomepageContainer>
         <img
           src={logo}
           alt="logo"
           width="210"
           style={{ margin: "5% 0 1% 0" }}
         />
-        <p style= {{color: 'white'}}><em>*Add a maximum of 5 ingredients per search*</em></p>
+        <p style={{ color: "white" }}>
+          <em>*Add a maximum of 5 ingredients per search*</em>
+        </p>
         <SearchBarContainer>
           <InputStyle
             type="text"
@@ -91,10 +93,8 @@ const Homepage = () => {
           ingredients={ingredient}
           deleteIngredient={deleteIngredient}
         />
-      {/* </Background> */}
-      <Results 
-        results={cocktailResult}
-      />
+      </HomepageContainer>
+      <Results results={cocktailResult} />
     </div>
   );
 };
