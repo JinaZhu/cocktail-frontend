@@ -19,8 +19,17 @@ const Homepage = () => {
 
   function addIngredient(e) {
     e.preventDefault();
-    setIngredient(ingredient.concat(inputIngredient));
-    setInputIngredient("");
+    if (inputIngredient === "") {
+      alert("Please enter a valid ingredient");
+    } else {
+      //because state is 1 behind, we used 4 as the max length
+      if (ingredient.length > 4) {
+        alert("Maximum of 5 ingredients allowed per search.");
+      } else {
+        setIngredient(ingredient.concat(inputIngredient));
+        setInputIngredient("");
+      }
+    }
   }
 
   const deleteIngredient = (deleteIndex) => {
@@ -44,8 +53,12 @@ const Homepage = () => {
         body: JSON.stringify(data),
       });
       const jsonCocktailResult = await result.json();
-      //storing cocktail results
-      setCocktailResult(jsonCocktailResult);
+      if (jsonCocktailResult.message) {
+        alert(jsonCocktailResult.message);
+      } else {
+        //storing cocktail results
+        setCocktailResult(jsonCocktailResult);
+      }
     } catch (error) {
       console.log(`Error: ${error}`);
     }
@@ -59,6 +72,9 @@ const Homepage = () => {
           width="210"
           style={{ margin: "5% 0 1% 0" }}
         />
+        <p style={{ color: "white" }}>
+          <em>*Add a maximum of 5 ingredients per search*</em>
+        </p>
         <SearchBarContainer>
           <InputStyle
             type="text"
