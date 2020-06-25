@@ -7,6 +7,7 @@ import {
   ListStyle,
   ListContainer,
   SaveButton,
+  FilteredPhoto,
 } from "./ResultStyles";
 
 const Results = ({ results }) => {
@@ -32,13 +33,7 @@ const Results = ({ results }) => {
   const allResults = results.map((result, index) => {
     return (
       <ResultContainer key={index}>
-        <img
-          src={result.drink_image}
-          alt="cocktail"
-          width="250"
-          height="250"
-          object-fit="cover"
-        />
+        <FilteredPhoto src={result.drink_image} alt="cocktail" />
         <CocktailTitleContainer>
           <CocktailTitleText>{result.drink_name}</CocktailTitleText>
         </CocktailTitleContainer>
