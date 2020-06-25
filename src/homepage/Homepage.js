@@ -14,7 +14,7 @@ import Results from "./results/Results";
 
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
-  const [ingredient, setIngredient] = useState([]);
+  const [ingredient, setIngredient] = useState(["lemon juice", "vodka"]);
   const [cocktailResult, setCocktailResult] = useState([]);
 
   function addIngredient(e) {
