@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
 export const CocktailsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: 50px;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // align-items: center;
+  // margin: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 1rem 0rem;
+  width: 80%;
+  margin: auto;
+  row-gap: 3.5rem;
+  column-gap: 2rem;
 `;
 
 export const ResultContainer = styled.div`
@@ -15,8 +22,9 @@ export const ResultContainer = styled.div`
   align-items: center;
   margin: 0 50px 20px 50px;
   border: 1px solid black;
-  height: 600px;
+  height: auto;
   width: 250px;
+  border: 1px solid black;
 `;
 
 export const CocktailTitleContainer = styled.div`
