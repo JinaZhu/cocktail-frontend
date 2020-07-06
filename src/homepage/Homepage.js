@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -12,10 +12,16 @@ import logo from "../static/cocktail-logo.png";
 import IngredientList from "./IngredientList";
 import Results from "./results/Results";
 
+import DisplayMatches from "./SearchIngredients";
+
 const Homepage = () => {
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
   const [cocktailResult, setCocktailResult] = useState([]);
+
+  useEffect(() => {
+    DisplayMatches(inputIngredient)
+  }, [inputIngredient])
 
   function addIngredient(e) {
     e.preventDefault();
