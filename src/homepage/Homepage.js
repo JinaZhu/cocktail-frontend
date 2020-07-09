@@ -15,16 +15,22 @@ import Results from "./results/Results";
 import DisplayMatches from "./SearchIngredients";
 
 const Homepage = () => {
-
+  
   const [onType, setOnType] = useState(false);
+  const [filterMatch, setFilterMatch] = useState([])
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
   const [cocktailResult, setCocktailResult] = useState([]);
 
   useEffect(() => {
     // runs only when user starts typing, avoids running on refresh
-    if (onType) {
-    DisplayMatches(inputIngredient)
+    if (onType && inputIngredient.length > 0) {
+    const ingredientMatches = DisplayMatches(inputIngredient)
+    setFilterMatch(ingredientMatches)
+    console.log(ingredientMatches, 'ingredientMatches')
+    if (inputIngredient.length === 0) {
+      setFilterMatch([])
+    }
     };
   }, [inputIngredient])
 
@@ -105,6 +111,16 @@ const Homepage = () => {
             <FontAwesomeIcon icon={faSearch} />
           </StyleInputButtons>
         </SearchBarContainer>
+        <ul>
+          {filterMatch.map((match => {
+            return (
+              <>
+              <br></br>
+                <span style={{color: 'white'}}>{match}</span>
+              </>
+            )
+          }))}
+        </ul>
         <IngredientList
           ingredients={ingredient}
           deleteIngredient={deleteIngredient}
