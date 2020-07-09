@@ -1,4 +1,4 @@
-const Ingredients = [
+export const Ingredients = [
   "7-up",
   "absinthe",
   "agave",
@@ -167,3 +167,4 @@ const Ingredients = [
   "white wine",
   "wine",
 ];
+

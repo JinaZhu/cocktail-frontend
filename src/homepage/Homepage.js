@@ -15,12 +15,17 @@ import Results from "./results/Results";
 import DisplayMatches from "./SearchIngredients";
 
 const Homepage = () => {
+
+  const [onType, setOnType] = useState(false);
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
   const [cocktailResult, setCocktailResult] = useState([]);
 
   useEffect(() => {
+    // runs only when user starts typing, avoids running on refresh
+    if (onType) {
     DisplayMatches(inputIngredient)
+    };
   }, [inputIngredient])
 
   function addIngredient(e) {
@@ -36,6 +41,11 @@ const Homepage = () => {
         setInputIngredient("");
       }
     }
+  }
+
+  const updateSearchIng = (evt) => {
+    setInputIngredient(evt.target.value)
+    setOnType(true);
   }
 
   const deleteIngredient = (deleteIndex) => {
@@ -85,7 +95,7 @@ const Homepage = () => {
           <InputStyle
             type="text"
             placeholder="enter ingredient"
-            onChange={(e) => setInputIngredient(e.target.value)}
+            onChange={updateSearchIng}
             value={inputIngredient}
           />
           <StyleInputButtons type="submit" onClick={addIngredient}>
