@@ -8,7 +8,8 @@ export const HomepageContainer = styled.div`
 
 export const Background = styled.div`
   background: url(${cocktail}) no-repeat center;
-  background-size: 1500px 860px;
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 100vh;
 `;
 
