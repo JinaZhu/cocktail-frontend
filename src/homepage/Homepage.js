@@ -70,8 +70,7 @@ const Homepage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ingredients: ingredient };
-    // console.log("submit");
-    // console.log(data);
+ 
     try {
       const result = await fetch("/ingredientsresults.json", {
         method: "POST",

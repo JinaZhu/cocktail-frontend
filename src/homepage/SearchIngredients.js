@@ -8,14 +8,6 @@ function DisplayMatches(matchIng) {
       return userIngInput.match(regex);
   })
 
-  // const filterResult = filterList.map(ingredient => {
-  //   return `
-  //     <li>
-  //       <span>${ingredient}</span>
-  //     </li>
-  //   `
-  // });
-  // console.log(Ing, 'Ing')
   return filterList
 
 };
