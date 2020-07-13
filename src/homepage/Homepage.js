@@ -22,17 +22,23 @@ const Homepage = () => {
   const [ingredient, setIngredient] = useState([]);
   const [cocktailResult, setCocktailResult] = useState([]);
 
+
   useEffect(() => {
     // runs only when user starts typing, avoids running on refresh
     if (onType && inputIngredient.length > 0) {
-    const ingredientMatches = DisplayMatches(inputIngredient)
-    setFilterMatch(ingredientMatches)
-    console.log(ingredientMatches, 'ingredientMatches')
-    if (inputIngredient.length === 0) {
-      setFilterMatch([])
+      const ingredientMatches = DisplayMatches(inputIngredient)
+      if (ingredientMatches.length > 5) {
+      setFilterMatch(ingredientMatches.slice(0, 5))
+      }
+      else {
+        setFilterMatch(ingredientMatches)
+      }
     }
+    else {
+      setFilterMatch([])
     };
   }, [inputIngredient])
+
 
   function addIngredient(e) {
     e.preventDefault();
@@ -64,8 +70,8 @@ const Homepage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ingredients: ingredient };
-    console.log("submit");
-    console.log(data);
+    // console.log("submit");
+    // console.log(data);
     try {
       const result = await fetch("/ingredientsresults.json", {
         method: "POST",
@@ -75,7 +81,10 @@ const Homepage = () => {
         body: JSON.stringify(data),
       });
       const jsonCocktailResult = await result.json();
+
+      // alert no results found when there is a message returned
       if (jsonCocktailResult.message) {
+        console.log(jsonCocktailResult.message, 'message')
         alert(jsonCocktailResult.message);
       } else {
         //storing cocktail results
@@ -112,14 +121,13 @@ const Homepage = () => {
           </StyleInputButtons>
         </SearchBarContainer>
         <ul>
-          {filterMatch.map((match => {
+          {filterMatch.map((match, index) => {
             return (
-              <>
-              <br></br>
+              <li key={index}>
                 <span style={{color: 'white'}}>{match}</span>
-              </>
+              </li>
             )
-          }))}
+          })}
         </ul>
         <IngredientList
           ingredients={ingredient}
