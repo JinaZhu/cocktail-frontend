@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
 import Homepage from "./homepage/Homepage";
 import { Background } from "./homepage/HomepageStyles";
+import Savedpage from "./Saved";
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={Homepage} />
-              <Route path="/displaySavedCocktails" component={Homepage} />
+              <Route path="/savedCocktails" component={Savedpage} />
             </Switch>
           </Router>
         </>

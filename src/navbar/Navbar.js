@@ -30,7 +30,7 @@ const Navbar = ({ user, setUser, userLogout }) => {
         )}
         {user && (
           <NavItem>
-            <StyleLink href="/displaySavedCocktails">
+            <StyleLink href="/SavedCocktails">
               Saved Cocktails
             </StyleLink>
           </NavItem>
