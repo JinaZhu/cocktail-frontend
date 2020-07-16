@@ -81,3 +81,19 @@ export const StyleInputButtons = styled.button`
     background: #6c6c6c;
   }
 `;
+
+export const SearchResults = styled.ul`
+  background-color: white;
+  width: 424px;
+  height: auto;
+  margin: auto;
+  list-style-type: none;
+  padding: 0 7px;
+`;
+
+export const SearchItem = styled.li`
+  color: #6c6c6c;
+  padding: 2px;
+  text-align: left;
+  font-size: 20px;
+`;
