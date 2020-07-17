@@ -8,6 +8,7 @@ import {
   StyleInputButtons,
   SearchResults,
   SearchItem,
+  Result,
 } from "./HomepageStyles";
 import logo from "../static/cocktail-logo.png";
 import IngredientList from "./IngredientList";
@@ -124,7 +125,9 @@ const Homepage = () => {
           deleteIngredient={deleteIngredient}
         />
       </HomepageContainer>
-      <Results results={cocktailResult} />
+      <Result>
+        <Results results={cocktailResult} />
+      </Result>
     </div>
   );
 };

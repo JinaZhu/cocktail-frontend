@@ -2,14 +2,12 @@ import styled from "styled-components";
 import cocktail from "../static/cocktail.png";
 
 export const HomepageContainer = styled.div`
-  background-size: 1500px 860px;
   min-height: 100vh;
 `;
 
 export const Background = styled.div`
   background: url(${cocktail}) no-repeat center;
   background-size: cover;
-  background-attachment: fixed;
   min-height: 100vh;
 `;
 
@@ -96,4 +94,10 @@ export const SearchItem = styled.li`
   padding: 2px;
   text-align: left;
   font-size: 20px;
+`;
+
+export const Result = styled.div`
+  background-color: white;
+  height: auto;
+  z-index: 100;
 `;
