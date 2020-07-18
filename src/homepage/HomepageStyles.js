@@ -9,6 +9,9 @@ export const Background = styled.div`
   background: url(${cocktail}) no-repeat center;
   background-size: cover;
   min-height: 100vh;
+  margin: -5px;
+  padding: 0;
+  width: 100%;
 `;
 
 export const IngredientDiv = styled.div`
@@ -100,4 +103,13 @@ export const Result = styled.div`
   background-color: white;
   height: auto;
   z-index: 100;
+`;
+
+export const AlignWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  margin-left: 0;
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CocktailsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 1rem 0rem;
+  padding: 0rem;
   margin: auto;
   row-gap: 1rem;
   column-gap: 1rem;

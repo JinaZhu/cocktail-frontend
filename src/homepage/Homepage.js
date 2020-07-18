@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
-  HomepageContainer,
   SearchBarContainer,
   InputStyle,
   StyleInputButtons,
   SearchResults,
   SearchItem,
   Result,
+  Background,
+  AlignWrapper,
 } from "./HomepageStyles";
 import logo from "../static/cocktail-logo.png";
 import IngredientList from "./IngredientList";
@@ -92,41 +93,43 @@ const Homepage = ({ user, setUser, userLogout }) => {
   }
   return (
     <div>
-      <HomepageContainer>
+      <Background>
         <Navbar user={user} setUser={setUser} userLogout={userLogout} />
-        <img
-          src={logo}
-          alt="logo"
-          width="210"
-          style={{ margin: "5% 0 1% 0" }}
-        />
-        <p style={{ color: "white" }}>
-          <em>*Add a maximum of 5 ingredients per search*</em>
-        </p>
-        <SearchBarContainer>
-          <InputStyle
-            type="text"
-            placeholder="enter ingredient"
-            onChange={updateSearchIng}
-            value={inputIngredient}
+        <AlignWrapper>
+          <img
+            src={logo}
+            alt="logo"
+            width="210"
+            style={{ margin: "5% 0 1% 0" }}
           />
-          <StyleInputButtons type="submit" onClick={addIngredient}>
-            <FontAwesomeIcon icon={faPlus} />
-          </StyleInputButtons>
-          <StyleInputButtons type="submit" onClick={handleSubmit}>
-            <FontAwesomeIcon icon={faSearch} />
-          </StyleInputButtons>
-        </SearchBarContainer>
-        <SearchResults>
-          {filterMatch.map((match, index) => {
-            return <SearchItem key={index}>{match}</SearchItem>;
-          })}
-        </SearchResults>
-        <IngredientList
-          ingredients={ingredient}
-          deleteIngredient={deleteIngredient}
-        />
-      </HomepageContainer>
+          <p style={{ color: "white" }}>
+            <em>*Add a maximum of 5 ingredients per search*</em>
+          </p>
+          <SearchBarContainer>
+            <InputStyle
+              type="text"
+              placeholder="enter ingredient"
+              onChange={updateSearchIng}
+              value={inputIngredient}
+            />
+            <StyleInputButtons type="submit" onClick={addIngredient}>
+              <FontAwesomeIcon icon={faPlus} />
+            </StyleInputButtons>
+            <StyleInputButtons type="submit" onClick={handleSubmit}>
+              <FontAwesomeIcon icon={faSearch} />
+            </StyleInputButtons>
+          </SearchBarContainer>
+          <SearchResults>
+            {filterMatch.map((match, index) => {
+              return <SearchItem key={index}>{match}</SearchItem>;
+            })}
+          </SearchResults>
+          <IngredientList
+            ingredients={ingredient}
+            deleteIngredient={deleteIngredient}
+          />
+        </AlignWrapper>
+      </Background>
       <Result>
         <Results results={cocktailResult} />
       </Result>

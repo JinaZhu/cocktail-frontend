@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./navbar/Navbar";
 import Homepage from "./homepage/Homepage";
 import { Background } from "./homepage/HomepageStyles";
 
@@ -42,7 +41,7 @@ function App() {
     alert("Successfully logged out!");
   };
   return (
-    <Background className="App" style={{ display: "grid" }}>
+    <div className="App" style={{ display: "grid", padding: 0, margin: 0 }}>
       {isLoaded && (
         <>
           <Router>
@@ -59,7 +58,7 @@ function App() {
           </Router>
         </>
       )}
-    </Background>
+    </div>
   );
 }
 
