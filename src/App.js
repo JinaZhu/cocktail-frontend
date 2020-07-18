@@ -45,10 +45,15 @@ function App() {
     <Background className="App" style={{ display: "grid" }}>
       {isLoaded && (
         <>
-          <Navbar user={user} setUser={setUser} userLogout={userLogout} />
           <Router>
             <Switch>
-              <Route exact path="/" component={Homepage} />
+              <Route exact path="/" component={Homepage}>
+                <Homepage
+                  user={user}
+                  setUser={setUser}
+                  userLogout={userLogout}
+                />
+              </Route>
               <Route path="/displaySavedCocktails" component={Homepage} />
             </Switch>
           </Router>

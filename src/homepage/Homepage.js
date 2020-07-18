@@ -14,8 +14,9 @@ import logo from "../static/cocktail-logo.png";
 import IngredientList from "./IngredientList";
 import Results from "./results/Results";
 import DisplayMatches from "./SearchIngredients";
+import Navbar from "../navbar/Navbar";
 
-const Homepage = () => {
+const Homepage = ({ user, setUser, userLogout }) => {
   const [onType, setOnType] = useState(false);
   const [filterMatch, setFilterMatch] = useState([]);
   const [inputIngredient, setInputIngredient] = useState("");
@@ -92,6 +93,7 @@ const Homepage = () => {
   return (
     <div>
       <HomepageContainer>
+        <Navbar user={user} setUser={setUser} userLogout={userLogout} />
         <img
           src={logo}
           alt="logo"
