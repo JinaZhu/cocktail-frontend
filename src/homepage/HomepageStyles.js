@@ -9,7 +9,7 @@ export const Background = styled.div`
   background: url(${cocktail}) no-repeat center;
   background-size: cover;
   min-height: 100vh;
-  margin: -5px;
+  margin: 0;
   padding: 0;
   width: 100%;
 `;
