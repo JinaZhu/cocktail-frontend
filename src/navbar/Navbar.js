@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Register from "../userInfo/register";
 import Login from "../userInfo/login";
 import { Nav, NavItem } from "reactstrap";
-import { StyleLink } from "./NavbarStyles";
+import { StyleLink, NavWapper } from "./NavbarStyles";
 
 const Navbar = ({ user, setUser, userLogout }) => {
   const [registerModal, setRegisterModal] = useState(false);
@@ -12,8 +12,8 @@ const Navbar = ({ user, setUser, userLogout }) => {
   const toggleLogin = () => setLoginModal(!loginModal);
 
   return (
-    <div style={{ margin: '5px 15px'}}>
-      <Nav style={{ float: "right"}}>
+    <div>
+      <NavWapper>
         {!user && (
           <NavItem>
             <StyleLink href="#" onClick={toggleRegister}>
@@ -30,19 +30,17 @@ const Navbar = ({ user, setUser, userLogout }) => {
         )}
         {user && (
           <NavItem>
-            <StyleLink href="/displaySavedCocktails">
-              Saved Cocktails
-            </StyleLink>
+            <StyleLink href="/displaySavedCocktails">Saved Cocktails</StyleLink>
           </NavItem>
         )}
         {user && (
           <NavItem>
-            <StyleLink href="#" onClick={userLogout}> 
+            <StyleLink href="#" onClick={userLogout}>
               Logout
             </StyleLink>
           </NavItem>
         )}
-      </Nav>
+      </NavWapper>
       <Register
         isOpen={registerModal}
         toggle={toggleRegister}

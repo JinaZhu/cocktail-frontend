@@ -2,43 +2,41 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
-  HomepageContainer,
   SearchBarContainer,
   InputStyle,
   StyleInputButtons,
+  SearchResults,
+  SearchItem,
+  Result,
+  Background,
+  AlignWrapper,
 } from "./HomepageStyles";
 import logo from "../static/cocktail-logo.png";
-
 import IngredientList from "./IngredientList";
 import Results from "./results/Results";
-
 import DisplayMatches from "./SearchIngredients";
+import Navbar from "../navbar/Navbar";
 
-const Homepage = () => {
-  
+const Homepage = ({ user, setUser, userLogout }) => {
   const [onType, setOnType] = useState(false);
-  const [filterMatch, setFilterMatch] = useState([])
+  const [filterMatch, setFilterMatch] = useState([]);
   const [inputIngredient, setInputIngredient] = useState("");
   const [ingredient, setIngredient] = useState([]);
   const [cocktailResult, setCocktailResult] = useState([]);
 
-
   useEffect(() => {
     // runs only when user starts typing, avoids running on refresh
     if (onType && inputIngredient.length > 0) {
-      const ingredientMatches = DisplayMatches(inputIngredient)
+      const ingredientMatches = DisplayMatches(inputIngredient);
       if (ingredientMatches.length > 5) {
-      setFilterMatch(ingredientMatches.slice(0, 5))
+        setFilterMatch(ingredientMatches.slice(0, 5));
+      } else {
+        setFilterMatch(ingredientMatches);
       }
-      else {
-        setFilterMatch(ingredientMatches)
-      }
+    } else {
+      setFilterMatch([]);
     }
-    else {
-      setFilterMatch([])
-    };
-  }, [inputIngredient])
-
+  }, [inputIngredient]);
 
   function addIngredient(e) {
     e.preventDefault();
@@ -56,9 +54,9 @@ const Homepage = () => {
   }
 
   const updateSearchIng = (evt) => {
-    setInputIngredient(evt.target.value)
+    setInputIngredient(evt.target.value);
     setOnType(true);
-  }
+  };
 
   const deleteIngredient = (deleteIndex) => {
     const ingredientCopy = [...ingredient];
@@ -70,7 +68,7 @@ const Homepage = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const data = { ingredients: ingredient };
- 
+
     try {
       const result = await fetch("/ingredientsresults.json", {
         method: "POST",
@@ -83,7 +81,7 @@ const Homepage = () => {
 
       // alert no results found when there is a message returned
       if (jsonCocktailResult.message) {
-        console.log(jsonCocktailResult.message, 'message')
+        console.log(jsonCocktailResult.message, "message");
         alert(jsonCocktailResult.message);
       } else {
         //storing cocktail results
@@ -95,45 +93,46 @@ const Homepage = () => {
   }
   return (
     <div>
-      <HomepageContainer>
-        <img
-          src={logo}
-          alt="logo"
-          width="210"
-          style={{ margin: "5% 0 1% 0" }}
-        />
-        <p style={{ color: "white" }}>
-          <em>*Add a maximum of 5 ingredients per search*</em>
-        </p>
-        <SearchBarContainer>
-          <InputStyle
-            type="text"
-            placeholder="enter ingredient"
-            onChange={updateSearchIng}
-            value={inputIngredient}
+      <Background>
+        <Navbar user={user} setUser={setUser} userLogout={userLogout} />
+        <AlignWrapper>
+          <img
+            src={logo}
+            alt="logo"
+            width="210"
+            style={{ margin: "5% 0 1% 0" }}
           />
-          <StyleInputButtons type="submit" onClick={addIngredient}>
-            <FontAwesomeIcon icon={faPlus} />
-          </StyleInputButtons>
-          <StyleInputButtons type="submit" onClick={handleSubmit}>
-            <FontAwesomeIcon icon={faSearch} />
-          </StyleInputButtons>
-        </SearchBarContainer>
-        <ul>
-          {filterMatch.map((match, index) => {
-            return (
-              <li key={index}>
-                <span style={{color: 'white'}}>{match}</span>
-              </li>
-            )
-          })}
-        </ul>
-        <IngredientList
-          ingredients={ingredient}
-          deleteIngredient={deleteIngredient}
-        />
-      </HomepageContainer>
-      <Results results={cocktailResult} />
+          <p style={{ color: "white" }}>
+            <em>*Add a maximum of 5 ingredients per search*</em>
+          </p>
+          <SearchBarContainer>
+            <InputStyle
+              type="text"
+              placeholder="enter ingredient"
+              onChange={updateSearchIng}
+              value={inputIngredient}
+            />
+            <StyleInputButtons type="submit" onClick={addIngredient}>
+              <FontAwesomeIcon icon={faPlus} />
+            </StyleInputButtons>
+            <StyleInputButtons type="submit" onClick={handleSubmit}>
+              <FontAwesomeIcon icon={faSearch} />
+            </StyleInputButtons>
+          </SearchBarContainer>
+          <SearchResults>
+            {filterMatch.map((match, index) => {
+              return <SearchItem key={index}>{match}</SearchItem>;
+            })}
+          </SearchResults>
+          <IngredientList
+            ingredients={ingredient}
+            deleteIngredient={deleteIngredient}
+          />
+        </AlignWrapper>
+      </Background>
+      <Result>
+        <Results results={cocktailResult} />
+      </Result>
     </div>
   );
 };

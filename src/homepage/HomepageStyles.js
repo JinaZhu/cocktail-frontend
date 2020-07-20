@@ -2,15 +2,16 @@ import styled from "styled-components";
 import cocktail from "../static/cocktail.png";
 
 export const HomepageContainer = styled.div`
-  background-size: 1500px 860px;
   min-height: 100vh;
 `;
 
 export const Background = styled.div`
   background: url(${cocktail}) no-repeat center;
   background-size: cover;
-  background-attachment: fixed;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 `;
 
 export const IngredientDiv = styled.div`
@@ -28,7 +29,7 @@ export const IngredientContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background: white;
-  min-width: 30%;
+  min-width: 300px;
   margin: 0.5rem;
   opacity: 0.7;
 `;
@@ -80,4 +81,37 @@ export const StyleInputButtons = styled.button`
     color: white;
     background: #6c6c6c;
   }
+`;
+
+export const SearchResults = styled.ul`
+  background-color: white;
+  width: 424px;
+  height: auto;
+  margin: auto;
+  list-style-type: none;
+  padding: 0 7px;
+`;
+
+export const SearchItem = styled.li`
+  color: #6c6c6c;
+  padding: 2px;
+  text-align: left;
+  font-size: 20px;
+`;
+
+export const Result = styled.div`
+  background-color: white;
+  height: auto;
+  z-index: 100;
+  margin: 5%;
+  padding: 0;
+`;
+
+export const AlignWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0;
+  margin-left: 0;
 `;
