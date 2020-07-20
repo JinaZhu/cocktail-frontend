@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Nav } from "reactstrap";
 
 export const StyleLink = styled.a`
   color: #ffffff;
@@ -6,7 +7,15 @@ export const StyleLink = styled.a`
 
   &:hover {
     color: #c7cdcf;
-    ${'' /* font-style: italic;   */}
+    ${"" /* font-style: italic;   */}
     text-decoration: none;
   }
+`;
+
+export const NavWapper = styled(Nav)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
 `;
