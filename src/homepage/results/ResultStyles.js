@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CocktailsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 0rem;
   margin: auto;
   row-gap: 1rem;
@@ -15,7 +15,7 @@ export const ResultContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 50px 20px 50px;
+  margin: 0 2%;
   border: 1px solid black;
   height: auto;
   width: 250px;

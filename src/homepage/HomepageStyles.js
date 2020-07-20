@@ -29,7 +29,7 @@ export const IngredientContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background: white;
-  min-width: 30%;
+  min-width: 300px;
   margin: 0.5rem;
   opacity: 0.7;
 `;
@@ -103,6 +103,8 @@ export const Result = styled.div`
   background-color: white;
   height: auto;
   z-index: 100;
+  margin: 5%;
+  padding: 0;
 `;
 
 export const AlignWrapper = styled.div`
