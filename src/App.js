@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from "./homepage/Homepage";
-import { Background } from "./homepage/HomepageStyles";
-import Savedpage from "./Saved";
+import Savedpage from "./saved/Saved";
 
 function App() {
   const [user, setUser] = useState("");
@@ -54,7 +53,13 @@ function App() {
                   userLogout={userLogout}
                 />
               </Route>
-              <Route path="/displaySavedCocktails" component={Homepage} />
+              <Route path="/displaySavedCocktails" component={Savedpage}>
+                <Savedpage
+                  user={user}
+                  setUser={setUser}
+                  userLogout={userLogout}
+                />
+              </Route>
             </Switch>
           </Router>
         </>
