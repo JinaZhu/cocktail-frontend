@@ -47,8 +47,6 @@ function App() {
         <>
           <Router>
             <Switch>
-              <Route exact path="/" component={Homepage} />
-              <Route path="/savedCocktails" component={Savedpage} />
               <Route exact path="/" component={Homepage}>
                 <Homepage
                   user={user}
