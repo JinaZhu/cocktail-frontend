@@ -47,7 +47,7 @@ export const ListContainer = styled.ul`
 `;
 
 export const ListStyle = styled.li`
-  list-style-type: "- ";
+  list-style-type: None;
   list-style-position: inside;
 `;
 
