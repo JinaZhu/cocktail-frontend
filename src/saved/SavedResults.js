@@ -56,13 +56,12 @@ const ListContainer = styled.ul`
 `;
 
 
-const SavedResults = ({ results }) => {
+const SavedResults = ({ results, setSavedResults }) => {
 
   const [showIng, setShowIng] = useState({});
 
   const fetchIng = async (savedCocktail, e) => {
       e.preventDefault();
-
       try {
         const ingredients = await fetch("/getIngredients.json", {
           method: "POST",
@@ -82,6 +81,21 @@ const SavedResults = ({ results }) => {
       }
   }
 
+  const removeCocktail = async (removeCocktail, e) => {
+    e.preventDefault();
+    try {
+      await fetch("/deleteSavedCocktail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(removeCocktail),
+      });
+      setSavedResults(results.filter(cocktails => cocktails.cocktail_name !== removeCocktail));
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  }
 
   const allSavedResults = results.map((result, index)=> {
     return (
@@ -106,7 +120,11 @@ const SavedResults = ({ results }) => {
           })}
           </ListContainer>
         )}
-        
+
+        <SaveButton onClick={(e) => removeCocktail(result.cocktail_name, e)}>
+            x
+        </SaveButton> 
+
       </SavedContainer>
     );
   }

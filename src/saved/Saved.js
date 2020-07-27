@@ -13,7 +13,6 @@ const Background = styled.div`
 `
 const Savedpage = ({ user, setUser, userLogout }) => {
 
-    // set states here
     const [savedResults, setSavedResults] = useState([]);
 
     useEffect(() => {
@@ -31,11 +30,11 @@ const Savedpage = ({ user, setUser, userLogout }) => {
         fetchResults();
     }, []);
 
-    console.log(savedResults, 'savedResults');
+    
     return(
         <Background>
             <Navbar user={user} setUser={setUser} userLogout={userLogout} />
-            <SavedResults results={savedResults}/>
+            <SavedResults results={savedResults} setSavedResults={setSavedResults}/>
         </Background>
     )
 }

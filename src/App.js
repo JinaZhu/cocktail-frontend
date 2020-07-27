@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory } from "react-router-dom";
 import Homepage from "./homepage/Homepage";
 import Savedpage from "./saved/Saved";
 
@@ -8,6 +8,7 @@ function App() {
   const [user, setUser] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
 
+  let history = useHistory()
   // check if user is logged in
   async function checkLoggedIn() {
     const userName = await fetch("/getUser");
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   // handles user logging out
-  const userLogout = (evt) => {
+  const userLogout = (evt, history) => {
     evt.preventDefault();
     fetch("/logout", {
       method: "POST",
@@ -39,7 +40,11 @@ function App() {
     });
     setUser("");
     alert("Successfully logged out!");
+    
+    history.push('/')
+
   };
+
   return (
     <div className="App" style={{ display: "grid", padding: 0, margin: 0 }}>
       {isLoaded && (
@@ -51,6 +56,7 @@ function App() {
                   user={user}
                   setUser={setUser}
                   userLogout={userLogout}
+                  history={history}
                 />
               </Route>
               <Route path="/displaySavedCocktails" component={Savedpage}>
