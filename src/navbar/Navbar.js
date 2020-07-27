@@ -28,6 +28,9 @@ const Navbar = ({ user, setUser, userLogout }) => {
             </StyleLink>
           </NavItem>
         )}
+        <NavItem>
+          <StyleLink href="/">Home</StyleLink>
+        </NavItem>
         {user && (
           <NavItem>
             <StyleLink href="/displaySavedCocktails">Saved Cocktails</StyleLink>

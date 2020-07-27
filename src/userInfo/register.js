@@ -14,6 +14,8 @@ import validateRegister from './ValidateRegister';
 
 const Register = ({isOpen, toggle, setUser}) => {
 
+  console.log(setUser, 'setUser');
+
   const initialState = {
     fname: '',
     lname: '',
@@ -43,6 +45,7 @@ const Register = ({isOpen, toggle, setUser}) => {
       // close modal once registration is successful
       if (jsonResponse.userName) {
         toggle(toggle)
+        console.log(setUser, 'setUser')
         setUser(true);
       }
     }
