@@ -4,7 +4,7 @@ import Login from "../userInfo/login";
 import { Nav, NavItem } from "reactstrap";
 import { StyleLink, NavWapper } from "./NavbarStyles";
 
-const Navbar = ({ user, setUser, userLogout }) => {
+const Navbar = ({ user, setUser, userLogout, history }) => {
   const [registerModal, setRegisterModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
 
@@ -38,7 +38,7 @@ const Navbar = ({ user, setUser, userLogout }) => {
         )}
         {user && (
           <NavItem>
-            <StyleLink href="#" onClick={userLogout}>
+            <StyleLink href="/" onClick={userLogout, history}>
               Logout
             </StyleLink>
           </NavItem>

@@ -11,11 +11,9 @@ import {
 } from "./ResultStyles";
 
 const Results = ({ results }) => {
-  console.log(results);
   const handleSave = async (index, e) => {
     e.preventDefault();
-    console.log(results[index]);
-
+  
     try {
       const response = await fetch("/save", {
         method: "POST",

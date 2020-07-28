@@ -17,7 +17,7 @@ import Results from "./results/Results";
 import DisplayMatches from "./SearchIngredients";
 import Navbar from "../navbar/Navbar";
 
-const Homepage = ({ user, setUser, userLogout }) => {
+const Homepage = ({ user, setUser, userLogout, history }) => {
   const [onType, setOnType] = useState(false);
   const [filterMatch, setFilterMatch] = useState([]);
   const [inputIngredient, setInputIngredient] = useState("");
@@ -94,7 +94,7 @@ const Homepage = ({ user, setUser, userLogout }) => {
   return (
     <div>
       <Background>
-        <Navbar user={user} setUser={setUser} userLogout={userLogout} />
+        <Navbar user={user} setUser={setUser} userLogout={userLogout} history={history}/>
         <AlignWrapper>
           <img
             src={logo}
